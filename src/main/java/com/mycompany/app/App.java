@@ -21,7 +21,7 @@ public class App
       return false;
     }
 
-    public static void main(String[] args) {
+   public static void main(String[] args) {
         port(getHerokuAssignedPort());
 
         get("/", (req, res) -> "Hello, World");
