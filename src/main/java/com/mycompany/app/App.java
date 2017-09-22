@@ -26,8 +26,8 @@ public class App
         int a= getHerokuAssignetPort();
 	
 	port(a);
-	
-        get("/", (req, res) -> "Hello, World"+""+a);
+	System.out.println(a);
+        get("/", (req, res) -> "Hello,yunus"+""+a);
 
         post("/compute", (req, res) -> {
           //System.out.println(req.queryParams("input1"));
