@@ -24,7 +24,7 @@ public class App
 
    public static void main(String[] args) {
 
-	port(getHerokuAssignedPort);
+	port(getHerokuAssignedPort());
 
         get("/", (req, res) -> "Hello,World");
 
