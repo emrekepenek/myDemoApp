@@ -23,11 +23,10 @@ public class App
     }
 
    public static void main(String[] args) {
-        int a= getHerokuAssignetPort();
-	
-	port(a);
-	System.out.println(a);
-        get("/", (req, res) -> "Hello,yunus"+""+a);
+
+	port(getHerokuAssignedPort);
+
+        get("/", (req, res) -> "Hello,World");
 
         post("/compute", (req, res) -> {
           //System.out.println(req.queryParams("input1"));
