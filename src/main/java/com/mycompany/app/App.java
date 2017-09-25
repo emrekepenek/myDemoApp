@@ -12,14 +12,16 @@ import spark.template.mustache.MustacheTemplateEngine;
 
 public class App
 {
-    public static boolean search(ArrayList<Integer> array, int e) {
-      System.out.println("inside search");
-      if (array == null) return false;
+    public static String search(ArrayList<String> array, int sma , int big) {//bu foksiyon arrayda ki uzunlugu sma ile big arasında olan ilk
+      System.out.println("inside search");				     //stringi doner
+      if(big<sma)//kucuk olması gereken degiskenin buyuk olma ihtimali
+	return "";
+      if (array == null) return "";
 
-      for (int elt : array) {
-        if (elt == e) return true;
+      for (String elt : array) {
+        if (elt.length()<=big&&elt.length()>=sma) return elt;
       }
-      return false;
+      return "";
     }
 
    public static void main(String[] args) {
@@ -35,10 +37,10 @@ public class App
           String input1 = req.queryParams("input1");
           java.util.Scanner sc1 = new java.util.Scanner(input1);
           sc1.useDelimiter("[;\r\n]+");
-          java.util.ArrayList<Integer> inputList = new java.util.ArrayList<>();
+          java.util.ArrayList<String> inputList = new java.util.ArrayList<>();
           while (sc1.hasNext())
           {
-            int value = Integer.parseInt(sc1.next().replaceAll("\\s",""));
+            String value = sc1.next().replaceAll("\\s","");
             inputList.add(value);
           }
           System.out.println(inputList);
@@ -46,8 +48,11 @@ public class App
 
           String input2 = req.queryParams("input2").replaceAll("\\s","");
           int input2AsInt = Integer.parseInt(input2);
+	  
+	  String input3 = req.queryParams("input3").replaceAll("\\s","");
+          int input3AsInt = Integer.parseInt(input3);
 
-          boolean result = App.search(inputList, input2AsInt);
+          String result = App.search(inputList, input2AsInt,input3AsInt);
 
          Map map = new HashMap();
           map.put("result", result);
